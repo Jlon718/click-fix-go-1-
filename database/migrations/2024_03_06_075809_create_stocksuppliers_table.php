@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('stocksuppliers', function (Blueprint $table) {
+        Schema::create('stock_suppliers', function (Blueprint $table) {
             $table->increments('stock_supplier_id');
             $table->unsignedInteger('stock_id')->index();
             $table->foreign('stock_id')->references('id')->on('stocks')->onDelete('cascade');

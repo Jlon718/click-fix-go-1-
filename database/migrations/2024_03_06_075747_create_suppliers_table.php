@@ -12,7 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('suppliers', function (Blueprint $table) {
-            $table->id();
+            $table->id('supplier_id'); // Creates 'supplier_id' field as primary key auto-increment
+            $table->string('supplier_name');
+            $table->string('supplier_email')->unique();
+            $table->string('contact_number')->unique();
+            $table->string('address'); 
             $table->timestamps();
         });
     }

@@ -35,9 +35,9 @@
             <div class="col-md-4 col-sm-6 device-card">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Manage supplies</h3>
-                        <p class="card-text">CRUD Supplies</p>
-                        <a href="/services/index" class="btn btn-primary">Click here</a>
+                        <h3 class="card-title">Manage stocks</h3>
+                        <p class="card-text">CRUD stocks</p>
+                        <a href="/stock-suppliers" class="btn btn-primary">Click here</a>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     <div class="card-body">
                         <h3 class="card-title">Manage supplier</h3>
                         <p class="card-text">CRUD Supplier</p>
-                        <a href="/services/index" class="btn btn-primary">Click here</a>
+                        <a href="/supplier" class="btn btn-primary">Click here</a>
                     </div>
                 </div>
             </div>

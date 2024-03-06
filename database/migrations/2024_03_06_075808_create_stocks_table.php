@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('stocks', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('stock_id');
+            $table->string('stock_name');
             $table->timestamps();
         });
     }
