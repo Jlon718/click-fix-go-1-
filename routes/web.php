@@ -1,12 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QueueController;
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SmartphoneController;
 use App\Http\Controllers\DeviceserviceController;
-use App\Http\Controllers\QueueController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\TicketController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StockSupplierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,8 +39,8 @@ Route::prefix('/devices')->group(function () {
 
 Route::prefix('/queues')->group(function () {
     Route::get('/index', [QueueController::class, 'index'])->name('queues.index');
+    Route::get('/{id}/finish', [QueueController::class, 'finish'])->name('queues.finish');
     Route::get('/{id}/tickets', [TicketController::class, 'index'])->name('tickets.index');
-    Route::get('/{id}/finish', [TicketController::class, 'index'])->name('tickets.index');
     Route::get('/{id}/tickets/repair', [TicketController::class, 'repair'])->name('tickets.repair');
     Route::get('/{id}/tickets/finish', [TicketController::class, 'finish'])->name('tickets.finish');
     Route::post('/store', [DeviceController::class, 'store'])->name('devices.store');
@@ -54,15 +55,14 @@ Route::prefix('/services')->group(function () {
     Route::get('/create', [SmartphoneController::class, 'create'])->name('smartphones.create');
 });
 
-// Route::prefix('stock-suppliers')->group(function () {
-//     Route::get('/', [StockSupplierController::class, 'index'])->name('stock-suppliers.index');
-//     Route::get('/create', [StockSupplierController::class, 'create'])->name('stock-suppliers.create');
-//     Route::post('/', [StockSupplierController::class, 'store'])->name('stock-suppliers.store');
-//     Route::put('/{stock_supplier}/edit', [StockSupplierController::class, 'edit'])->name('stock-suppliers.edit');
-//     Route::put('/{stock_supplier}', [StockSupplierController::class, 'update'])->name('stock-suppliers.update');
-//     Route::delete('/{stock_supplier}', [StockSupplierController::class, 'destroy'])->name('stock-suppliers.destroy');
-// });
-
+Route::prefix('stock-suppliers')->group(function () {
+    Route::get('/', [StockSupplierController::class, 'index'])->name('stock-suppliers.index');
+    Route::get('/create', [StockSupplierController::class, 'create'])->name('stock-suppliers.create');
+    Route::post('/', [StockSupplierController::class, 'store'])->name('stock-suppliers.store');
+    Route::put('/{stock_supplier}/edit', [StockSupplierController::class, 'edit'])->name('stock-suppliers.edit');
+    Route::put('/{stock_supplier}', [StockSupplierController::class, 'update'])->name('stock-suppliers.update');
+    Route::delete('/{stock_supplier}', [StockSupplierController::class, 'destroy'])->name('stock-suppliers.destroy');
+});
 
 Route::get('/login', function () {
     return view('login');

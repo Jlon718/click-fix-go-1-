@@ -9,10 +9,11 @@
                 <div class="col-md-4 col-sm-6 device-card">
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="card-title">Queue: {{ $queue }}</h3>
-                            <p class="card-text">Manage queue {{ $queue }}</p>
-                            <a href="/queues/{{$queue}}/tickets" class="btn btn-primary">Manage Queue</a>
-                            <a href="/queues/{{$queue}}/finish" class="btn btn-primary">Finish Queue</a>
+                            <h3 class="card-title">Queue: {{ $queue->queue_id }}</h3>
+                            <p class="card-text">Customer name: {{ $queue->customer_name }}</p>
+                            <p class="card-text">Status: {{ $queue->status }}</p>
+                            <a href="/queues/{{$queue->queue_id}}/tickets" class="btn btn-primary">Manage Queue</a>
+                            <a href="/queues/{{$queue->queue_id}}/finish" class="btn btn-primary">Finish Queue</a>
                         </div>
                     </div>
                 </div>

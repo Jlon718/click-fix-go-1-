@@ -36,6 +36,7 @@ class QueueController extends Controller
         $queue->date_placed = $request->date_placed;
         $queue->scheduled_date = $request->scheduled_date;
         $queue->phone_number = $request->phone_number;
+        $queue->status = 'for diagnosis';
         $queue->save();
 
         foreach($request->service_id as $service){
@@ -59,7 +60,15 @@ class QueueController extends Controller
     public function index()
     {
         $tickets = DB::table('tickets')->get();
-        $queues = DB::table('queues')->pluck('queue_id')->toArray();
-        return View::make('queues.index', compact('tickets', 'queues'));
+        $queues = DB::table('queues')->get();
+        return View::make('queues.index', compact('queues'));
+    }
+
+    public function finish($id)
+    {
+        $queue = Queue::where('queue_id', $id)->update([
+            'status' => 'finished',
+        ]);
+        return redirect()->route('queues.index');
     }
 }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('date_placed');
             $table->date('scheduled_date');
             $table->string('phone_number')->unique();
+            $table->string('status');
             $table->timestamps();
         });
     }
